@@ -3,18 +3,10 @@ import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import TaskSort from "./components/TaskSort";
 import TaskInfo from "./components/TaskInfo";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 function App() {
-  // Use local storage
-  const storedItems = JSON.parse(localStorage.getItem("todoItems"));
-
-  const [items, setItems] = useState(storedItems);
-
-  // Update local storage whenever a new item is added
-  useEffect(() => {
-    localStorage.setItem("todoItems", JSON.stringify(items));
-  }, [items])
+  const [items, setItems] = useState([]);
 
   const handleAddItem = (item) => {
     setItems(items => [...items, item])
